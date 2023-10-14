@@ -1,0 +1,228 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.sidebar {
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #7DB457;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    float: left;
+}
+
+.sidebar a {
+    padding: 15px;
+    text-decoration: none;
+    color: white;
+    font-family: fantasy;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.sidebar a:hover {
+    background-color: white;
+    color: #94572A;
+    width: 90%;
+    text-align: center;
+}
+
+main {
+    margin-left: 270px;
+    padding: 20px;
+    padding-top: 60px;
+}
+
+.search-container {
+    width: 100%;
+    margin: 0 auto; /* Center the search box horizontally */
+}
+
+/* Style for the search input */
+.search-container input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ECD9B9;
+    border-radius: 30px;
+    box-sizing: border-box;
+    background-color: #ECD9B9;
+    color: #94572A;
+    font-weight: bolder;
+}
+
+/* Optional: Style the search input when it's focused */
+.search-container input[type="text"]:focus {
+    outline: none;
+    border-color: #007bff; /* Change the border color when focused */
+}
+
+.title {
+    color: #94572A;
+    flex: 1
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: left;
+    font-weight: bold;
+    color: #94572A;
+    background-color: #FEFAF1;
+}
+
+th {
+    background-color: #DEC09A;
+    color: #94572A;
+}
+
+.add {
+    padding: 10px 20px;
+    margin-left: 70%;
+    width: 30%;
+    background-color: #7DB457;
+    color: white;
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    font-weight: bold;
+}
+
+.add:hover {
+    background-color: #45a049;
+}
+
+.edit {
+    padding: 10px 20px;
+    width: 100%;
+    background-color: #7DB457;
+    color: white;
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    font-weight: bold;
+}
+
+.edit:hover {
+    background-color: #45a049;
+}
+
+.delete {
+    padding: 10px 20px;
+    width: 100%;
+    background-color: #b45757;
+    color: white;
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    font-weight: bold;
+}
+
+.delete:hover {
+    background-color: #903f3f;
+}
+
+.transactions-section {
+    margin-top: 50px;
+}
+
+.other-section {
+    margin-top: 50px;
+}
+
+/* CSS for the modal */
+.modal {
+    display: contents;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #FEFAF1;
+    margin: 5% auto;
+    padding: 20px;
+    border: 5px solid #94572A;
+    border-radius: 30px;
+    width: 80%;
+    color: #94572A;
+    font-weight: bold;
+}
+.modal-content input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ECD9B9;
+    border-radius: 30px;
+    box-sizing: border-box;
+    background-color: #ECD9B9;
+    color: #94572A;
+    font-weight: bolder;
+}
+
+.modal-content input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ECD9B9;
+    border-radius: 30px;
+    box-sizing: border-box;
+    background-color: #ECD9B9;
+    color: #94572A;
+    font-weight: bolder;
+}
+.modal-content input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ECD9B9;
+    border-radius: 30px;
+    box-sizing: border-box;
+    background-color: #ECD9B9;
+    color: #94572A;
+    font-weight: bolder;
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.success {
+    padding: 10px 20px;
+    width: 100%;
+    background-color: #7DB457;
+    color: white;
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    font-weight: bold;
+    border-radius: 30px;
+    margin-top: 10px;
+}
+
+.success:hover {
+    background-color: #45a049;
+}
+
