@@ -59,7 +59,7 @@ main {
 /* Optional: Style the search input when it's focused */
 .search-container input[type="text"]:focus {
     outline: none;
-    border-color: #007bff; /* Change the border color when focused */
+    border-color: #94572A; /* Change the border color when focused */
 }
 
 .title {
@@ -93,7 +93,8 @@ th {
     width: 30%;
     background-color: #7DB457;
     color: white;
-    border: none;
+    border: 1;
+    border-radius: 30px;
     cursor: pointer;
     align-items: center;
     font-weight: bold;
@@ -143,7 +144,7 @@ th {
 
 /* CSS for the modal */
 .modal {
-    display: contents;
+    display: flexbox;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -174,6 +175,10 @@ th {
     color: #94572A;
     font-weight: bolder;
 }
+.modal-content input[type="date"]:focus {
+    outline: none;
+    border-color: #94572A;
+}
 
 .modal-content input[type="text"] {
     width: 100%;
@@ -185,6 +190,11 @@ th {
     color: #94572A;
     font-weight: bolder;
 }
+.modal-content input[type="text"]:focus {
+    outline: none;
+    border-color: #94572A;
+}
+
 .modal-content input[type="number"] {
     width: 100%;
     padding: 10px;
@@ -195,6 +205,11 @@ th {
     color: #94572A;
     font-weight: bolder;
 }
+.modal-content input[type="number"]:focus {
+    outline: none;
+    border-color: #94572A;
+}
+
 .close {
     color: #aaa;
     float: right;

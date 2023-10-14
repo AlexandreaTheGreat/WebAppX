@@ -1,6 +1,7 @@
 var app = angular.module('myApp', []);
 const url = 'http://127.0.0.1:5000/api/Transactions';
 
+
 app.controller('TransactionController', function($scope, $http) {
     $scope.newTransaction = {
         Date: '',
@@ -60,7 +61,46 @@ app.controller('TransactionController', function($scope, $http) {
     };
 
     // Function to edit a transaction
-    $scope.editTransaction = function(transactionId) {
-        // Implement edit transaction logic here using API PUT request
+    $scope.editingTransaction = null;
+
+    // Function to set data for editing
+    $scope.editTransaction = function(transaction) {
+        // Set the editingTransaction object to the selected transaction's data
+        $scope.editingTransaction = angular.copy(transaction);
+        $scope.editingTransaction.Date = new Date(transaction.Date);
+        $scope.showEditModal = true;
+    };
+
+    // Function to update a transaction
+    $scope.updateTransaction = function() {
+        // Make a PUT request to update the transaction
+        $http.put(url + '/' + $scope.editingTransaction.id, $scope.editingTransaction)
+            .then(function(response) {
+                // Handle success, maybe refresh the transaction list
+                console.log('Transaction updated successfully');
+                
+                // Close the modal after updating the transaction
+                $scope.showEditModal = false;
+
+                // Reset the editingTransaction object
+                $scope.editingTransaction = null;
+                $scope.fetchTransactions();
+                $scope.$apply();
+            })
+            .catch(function(error) {
+                console.error('Error updating transaction:', error);
+            });
+    };
+
+
+    $scope.filterType = '';
+    $scope.filterTransactions = function(transaction) {
+        if (!$scope.filterType) {
+            // If filterType is not selected, show all transactions
+            return true;
+        } else {
+            // Show transactions based on selected filterType
+            return transaction.Type == $scope.filterType;
+        }
     };
 });

@@ -16,7 +16,7 @@
     <nav>
         <div class="sidebar">
             <a href="#home">DASHBOARD</a>
-            <a href="#about">TRANSACTIONS</a>
+            <a href="index.html">TRANSACTIONS</a>
             <a href="#services">CALENDAR</a>
             <a href="#contact">STATISTICS</a>
             <a href="#contact">SETTINGS</a>
@@ -26,7 +26,7 @@
         <section>
             <div ng-app="myApp">
                 <div class="search-container">
-                    <input type="text" ng-model="searchText" placeholder="Search Transactions">
+                    <input type="text" ng-model="searchText" placeholder="Search for transactions">
                 </div>
                 <div ng-controller="TransactionController">
                     <div class="title">
@@ -57,6 +57,12 @@
                         </div>
                     </div>
                     <table>
+                        <select ng-model="filterType">
+                            <option value="">All</option>
+                            <option value="1">Expense</option>
+                            <option value="2">Sale</option>
+                        </select>
+                        
                         <thead>
                             <tr>
                                 <th>Date</th>
@@ -68,7 +74,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="transaction in transactions">
+                            <tr ng-repeat="transaction in transactions | filter:filterTransactions">
                                 <td>{{ transaction.Date }}</td>
                                 <td>{{ transaction.Name }}</td>
                                 <td>{{ transaction.Amount }}</td>
@@ -76,11 +82,34 @@
                                 <td>{{ transaction.Type }}</td>
                                 <td>
                                     <button class="delete" ng-click="deleteTransaction(transaction.id)">Delete</button>
-                                    <button class="edit" ng-click="updateTransaction(transaction.id)">Edit</button>
+                                    <button class="edit" ng-click="editTransaction(transaction)">Edit</button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+                    <div class="modal" ng-show="showEditModal">
+                        <div class="modal-content">
+                            <span class="close" ng-click="showEditModal = false">&times;</span>
+                            <h2>Edit Transaction</h2>
+                            <form ng-submit="updateTransaction()">
+                                <label for="date">Date:</label><br>
+                                <input type="date" ng-model="editingTransaction.Date" required><br>
+                                
+                                <label for="productName">Product Name:</label><br>
+                                <input type="text" ng-model="editingTransaction.Name" required><br>
+                                
+                                <label for="amount">Amount:</label><br>
+                                <input type="number" ng-model="editingTransaction.Amount" required><br>
+                                
+                                <label for="price">Price:</label><br>
+                                <input type="number" ng-model="editingTransaction.Price" required><br>
+                                
+                                <label for="type">Type:</label><br>
+                                <input type="number" ng-model="editingTransaction.Type" required><br>
+                                <button type="submit" class="success">Update Transaction</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
