@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+
+<body>
+    <div id="app">
+        
+        <div class="logo-box">
+            <img src="images/coconut.png" alt="Logo" class="logo">
+            <h3>Financial Management System</h3>
+        </div>
+        <nav>
+            <div class="sidebar">
+                <a href="home.html" class="active"><i class="fas fa-home"></i>DASHBOARD</a>
+                <a href="index.html"><i class="fas fa-list"></i>TRANSACTIONS</a>
+                <a href="#services"><i class="fas fa-calendar"></i>CALENDAR</a>
+                <a href="#contact"><i class="fas fa-chart-bar"></i>STATISTICS</a>
+                <a href="#contact"><i class="fas fa-cog"></i>SETTINGS</a>
+            </div>
+        </nav>
+        <main>
+            <section>
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" v-model="searchText" placeholder="Search for transactions">
+                </div>
+                <div class="welcome">
+                    <h3>WELCOME BACK, ADMIN! Here is the overview for this month.</h3>
+                </div>
+                
+                <div class="dashboard">
+                    <!-- Revenue Box -->
+                    <div class="dashboard-box revenue-box">
+                        <div class="revenue">
+                            <h3>$5000</h3>
+                        </div>
+                        <div class="label-box">
+                            <span class="label">REVENUE</span>
+                        </div>
+                        <img src="images/1.png" alt="Revenue Image" class="dashboard-image">
+                    </div>
+            
+                    <!-- Profit Box -->
+                    <div class="dashboard-box profit-box">
+                        <div class="profit">
+                            <h3>$2000</h3>
+                        </div>
+                        <div class="label-box">
+                            <span class="label">PROFIT</span>
+                        </div>
+                        <img src="images/4.png" alt="Revenue Image" class="dashboard-image">
+                    </div>
+            
+                    <!-- Expenses Box -->
+                    <div class="dashboard-box expenses-box">
+                        <div class="expenses">
+                            <h3>$3000</h3>
+                        </div>
+                        <div class="label-box">
+                            <span class="label">EXPENSES</span>
+                        </div>
+                        <img src="images/3.png" alt="Revenue Image" class="dashboard-image">
+                    </div>
+            
+                    <!-- Loss Box -->
+                    <div class="dashboard-box loss-box">
+                        <div class="loss">
+                            <h3>$500</h3>
+                        </div>
+                        <div class="label-box">
+                            <span class="label">LOSS</span>
+                        </div>
+                        <img src="images/5.png" alt="Revenue Image" class="dashboard-image">
+                    </div>
+                </div>
+                <div class="large-box">
+                    <div class="large-box bottom-box1">
+                        <div class="label">Bottom Box 1</div>
+                        <div class="value">$1200</div>
+                    </div>
+                    <div class="large-box bottom-box2">
+                        <div class="label">Bottom Box 2</div>
+                        <div class="value">$800</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="scripts/app.js"></script>
+</body>
+
+</html>
