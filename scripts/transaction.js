@@ -3,6 +3,7 @@ new Vue({
     data: {
       searchText: '',
       showEditModal: false,
+      selectedDate: null,
       newTransaction: {
         Date: '',
         Name: '',
@@ -91,7 +92,7 @@ new Vue({
         const matchesType = !this.filterType || transaction.Type == this.filterType;
         const matchesSearch = !this.searchText || transaction.Name.toLowerCase().includes(this.searchText.toLowerCase());
         return matchesType && matchesSearch;
-      }
+      },
     }
   });
   

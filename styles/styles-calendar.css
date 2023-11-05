@@ -1,0 +1,292 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.sidebar {
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #7DB457;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 150px;
+    float: left;
+}
+
+.sidebar a {
+    padding: 15px;
+    text-decoration: none;
+    color: white;
+    font-weight: bolder;
+    text-align: center;
+    font-family: 'Gill Sans', sans-serif;
+    font-size: larger;
+}
+
+.sidebar a:hover {
+    background-color: white;
+    color: #94572A;
+    width: 90%;
+    text-align: center;
+}
+
+.sidebar a.active {
+    background-color: white;
+    color: #94572A;
+    width: 90%;
+    text-align: center;
+}
+
+.sidebar a i{
+    margin-right: 10px;
+}
+
+main {
+    margin-left: 270px;
+    padding: 20px;
+    padding-top: 60px;
+}
+
+.search-container {
+    width: 100%;
+    position: relative;
+    margin: 0 auto; /* Center the search box horizontally */
+}
+
+/* Style for the search input */
+.search-container input[type="text"] {
+    flex: 1;
+    padding: 10px 40px 10px 35px;
+    border: 1px solid #ECD9B9;
+    border-radius: 30px;
+    box-sizing: border-box;
+    background-color: #ECD9B9;
+    color: #94572A;
+    font-weight: bolder;
+    font-family:'Gill Sans', sans-serif
+}
+
+/* Optional: Style the search input when it's focused */
+.search-container input[type="text"]:focus {
+    outline: none;
+    border-color: #94572A; /* Change the border color when focused */
+    /*font-family: 'FontAwesome';*/
+}
+
+.search-container i {
+    color: #94572A;
+    font-size: 18px;
+    margin-left: 10px;
+    position: absolute;
+    margin-top: 10px;
+    opacity: 50%;
+}
+
+.title {
+    color: #94572A;
+    flex: 1
+}
+
+.logo-box {
+    position: fixed;
+    display: flex;
+    width: 235px;
+    background-color: #ECD9B9; /* Background color of the logo box */
+    padding: 8px; /* Adjust the padding as needed */
+    border-top: 10px solid #5E9448;
+    border-bottom: 10px solid #5E9448;
+    z-index: 2; /* Ensure the logo box appears above the navigation bar */
+    color:#94572A;
+}
+
+.logo {
+    margin-right: 5px;
+    width: 90px; /* Set the width of your logo */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.modal {
+    display: flexbox;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #FEFAF1;
+    margin: 5% auto;
+    padding: 20px;
+    border: 5px solid #94572A;
+    border-radius: 30px;
+    width: 80%;
+    color: #94572A;
+    font-weight: bold;
+}
+.modal-content input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ECD9B9;
+    border-radius: 30px;
+    box-sizing: border-box;
+    background-color: #ECD9B9;
+    color: #94572A;
+    font-weight: bolder;
+}
+.modal-content input[type="date"]:focus {
+    outline: none;
+    border-color: #94572A;
+}
+
+.modal-content input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ECD9B9;
+    border-radius: 30px;
+    box-sizing: border-box;
+    background-color: #ECD9B9;
+    color: #94572A;
+    font-weight: bolder;
+}
+.modal-content input[type="text"]:focus {
+    outline: none;
+    border-color: #94572A;
+}
+
+.modal-content input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ECD9B9;
+    border-radius: 30px;
+    box-sizing: border-box;
+    background-color: #ECD9B9;
+    color: #94572A;
+    font-weight: bolder;
+}
+.modal-content input[type="number"]:focus {
+    outline: none;
+    border-color: #94572A;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.success {
+    padding: 10px 20px;
+    width: 100%;
+    background-color: #7DB457;
+    color: white;
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    font-weight: bold;
+    border-radius: 30px;
+    margin-top: 10px;
+}
+
+.success:hover {
+    background-color: #45a049;
+}
+
+.calendar-container {
+    color: #94572A;
+}
+
+#calendar table {
+    border: 0 none;
+    width: 100%;
+}
+
+#calendar .fc-day-header {
+    text-align: center;
+    background-color: #7DB457;
+    color: white;
+    border: 1px solid #94572A;
+}
+
+/* Style the FullCalendar body cells */
+#calendar .fc-day {
+    width: 40px !important; /* Adjust the width of the cells */
+    max-width: 40px;
+    height: 80px; /* Adjust the height of the cells */
+    vertical-align: top;
+    border: 1px solid #ECD9B9;
+    border-radius: 10px;
+    background-color: #ECD9B9;
+    color: #94572A;
+}
+
+/* Style the FullCalendar today cell */
+#calendar .fc-day-today {
+    background-color: #d9c299;
+    color: #94572A;
+}
+
+.grayed-out-day {
+    color: #888; /* Set the text color to gray */
+}
+
+/* Style the FullCalendar event dots */
+
+
+.fc-toolbar-chunk {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px; /* Optional: Add margin to separate buttons from the calendar */
+}
+
+.fc-header-toolbar {
+    position: relative;
+    z-index: 1;
+    background-color: white;
+}
+
+/* Style all FullCalendar buttons */
+.fc-button {
+    background-color: #7DB457;
+    border: 1px solid #7DB457;
+    border-radius: 10px;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.fc-button:hover {
+    background-color: #4CAF50;
+}
+  
+  .fc-event-title {
+    font-weight: bold;
+    background-color: #7DB457 !important;
+    border: 1px solid #7DB457 !important;
+    border-radius: 5px;
+    color: white;
+    margin: 2px;
+  }

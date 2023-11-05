@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <link rel="stylesheet" href="styles/styles-calendar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/dist/fullcalendar.min.css" />
+
+</head>
+
+<body>
+    <div id="app">
+
+        <div class="logo-box">
+            <img src="images/logo2.png" alt="Logo" class="logo">
+            <h3>Financial Management System</h3>
+        </div>
+        <nav>
+            <div class="sidebar">
+                <a href="index.html"><i class="fas fa-home"></i>DASHBOARD</a>
+                <a href="transactions.html"><i class="fas fa-list"></i>TRANSACTIONS</a>
+                <a href="calendar.html" class="active"><i class="fas fa-calendar"></i>CALENDAR</a>
+                <a href="#contact"><i class="fas fa-chart-bar"></i>STATISTICS</a>
+                <a href="#contact"><i class="fas fa-cog"></i>SETTINGS</a>
+            </div>
+        </nav>
+        <main>
+            <section>
+                <div class="calendar-container">
+                    <div id="calendar"></div>
+                    <!-- Transaction Details Modal -->
+                </div>
+                <div class="modal" v-show="showModal">
+                    <div class="modal-content">
+                        <span class="close" @click="showModal = false">&times;</span>
+                        <h2>Schedule Transaction</h2>
+                        <form @submit.prevent="addEvent">
+                            <label for="productName">Product Name:</label><br>
+                            <input type="text" id="productName" v-model="newTransaction.Name" required><br>
+
+                            <label for="amount">Amount:</label><br>
+                            <input type="number" id="amount" v-model="newTransaction.Amount" required><br>
+
+                            <label for="price">Price:</label><br>
+                            <input type="number" id="price" v-model="newTransaction.Price" required><br>
+
+                            <label for="type">Type:</label><br>
+                            <input type="number" id="type" v-model="newTransaction.Type" required><br>
+                            <button type="submit" class="success">Save Transaction</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="scripts/calendar.js"></script>
+</body>
+
+</html>

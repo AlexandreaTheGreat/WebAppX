@@ -163,7 +163,56 @@ def update_transaction(transaction_id):
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+@app.route('/api/Scheduled', methods=['GET'])
+def get_sched_transactions():
+    try:
+        # Retrieve transactions from Firestore
+        transactions = []
+        transaction_docs = db.collection('Scheduled').stream()
 
+        for doc in transaction_docs:
+            transaction = doc.to_dict()
+            transaction['id'] = doc.id  # Include the transaction ID in the response
+            transactions.append(transaction)
+            
+
+        return jsonify({"transactions": transactions}), 200
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500, {'Content-Type': 'application/json'}
+
+@app.route('/api/Scheduled', methods=['POST'])
+def schedule_transaction():
+    try:
+        data = request.get_json()
+        product_name = data.get('Name')
+        amount = data.get('Amount')
+        price = data.get('Price')
+        date = data.get('Date')
+        transaction_type = data.get('Type')
+
+        # Validate input data here if necessary
+        transaction_type = int(transaction_type)
+
+        ID = str(uuid.uuid4())
+
+        # Add transaction to Firestore based on Type with current system time
+        transaction_data = {
+            'ID': ID,
+            'Date': date,
+            'Name': product_name,
+            'Amount': amount,
+            'Price': price,
+            'Type': transaction_type
+        }
+        
+        transaction_ref = db.collection('Scheduled').add(transaction_data)
+        
+
+        return jsonify({"message": "Transaction added successfully"}), 200
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 50
 
     
 if __name__ == '__main__':
