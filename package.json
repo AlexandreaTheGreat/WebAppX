@@ -1,0 +1,19 @@
+{
+  "name": "http-server",
+  "version": "1.0.0",
+  "description": "local serve",
+  "main": "index.js",
+  "scripts": {
+    "test": "w"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fullcalendar/core": "^6.1.9",
+    "@fullcalendar/daygrid": "^6.1.9",
+    "axios": "^1.5.1",
+    "python": "^0.0.4",
+    "python3": "^0.0.1",
+    "vue": "^3.3.6"
+  }
+}

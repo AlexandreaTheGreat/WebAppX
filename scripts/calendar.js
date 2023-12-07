@@ -61,19 +61,45 @@ new Vue({
             vm.openModal(info.date);
           },
           eventClick: function (info) {
-            // Handle event click (if needed)
-          },
+            console.log(info);
+            vm.handleEventClick(info);
+          }
+          
         });
         this.calendar.render();
       },
       updateCalendarEvents() {
         // Create an array of FullCalendar events from your transactions data
         const events = this.transactions.map(transaction => ({
+          id: transaction.id,
           title: transaction.Name,
           start: moment(transaction.Date).format('YYYY-MM-DD'), // Make sure this is in the correct format (e.g., '2023-10-31T10:00:00')
           // Add other event properties if necessary
         }));
         this.calendar.setOption('events', events);
+      },
+      updateEvent() {
+        // Clone the editingTransaction to avoid modifying the original
+        const updatedTransaction = { ...this.editingTransaction };
+      
+        // Update the transaction on the frontend
+        const index = this.transactions.findIndex(transaction => transaction.id === this.editingTransaction.id);
+        if (index !== -1) {
+          this.transactions.splice(index, 1, updatedTransaction);
+        }
+      
+        // Send a request to update the transaction on the backend
+        axios.put(`http://127.0.0.1:5000/api/Scheduled/${this.editingTransaction.id}`, updatedTransaction)
+          .then(response => {
+            console.log(response.data.message);
+          })
+          .catch(error => {
+            console.error('Error updating transaction:', error);
+          });
+      
+        // Close the edit modal
+        this.showEditModal = false;
+        this.editingTransaction = null;
       },
       openModal(date) {
         this.selectedDate = date; // Store the selected date
@@ -112,6 +138,45 @@ new Vue({
           Type: ''
         };
       },
+
+      handleEventClick(info) {
+        // Find the event in the FullCalendar events array by eventId
+        const event = this.transactions.find(transaction => transaction.id === info.event.id);
+  
+        if (event) {
+          // Open the modal for editing
+          this.showEditModal = true;
+          this.editingTransaction = { ...event }; // Clone the event to avoid modifying the original
+        }
+      },
+  
+      // Add a new method to handle event deletion
+      handleEventDelete() {
+        // Find the index of the event in the FullCalendar events array by eventId
+        const eventIndex = this.transactions.findIndex(transaction => transaction.id === this.editingTransaction.id);
+  
+        if (eventIndex !== -1) {
+          // Remove the event from the FullCalendar events array
+          this.transactions.splice(eventIndex, 1);
+  
+          // Remove the event from the calendar
+          this.calendar.getEventById(this.editingTransaction.id).remove();
+  
+          // Send a request to delete the scheduled transaction from the backend
+          axios.delete(`http://127.0.0.1:5000/api/Scheduled/${this.editingTransaction.id}`)
+            .then(response => {
+              console.log(response.data.message);
+            })
+            .catch(error => {
+              console.error('Error deleting transaction:', error);
+            });
+  
+          // Close the edit modal
+          this.showEditModal = false;
+          this.editingTransaction = null;
+        }
+      },
+      
     },
   });
   

@@ -290,3 +290,21 @@ main {
     color: white;
     margin: 2px;
   }
+
+.delete {
+    padding: 10px 20px;
+    width: 100%;
+    background-color: #b45757;
+    color: white;
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    font-weight: bold;
+    border: 1px solid #b45757;
+    border-radius: 30px;
+    margin-top: 10px;
+}
+
+.delete:hover {
+    background-color: #903f3f;
+}

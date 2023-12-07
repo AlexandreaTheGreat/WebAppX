@@ -214,6 +214,50 @@ def schedule_transaction():
     except Exception as e:
         return jsonify({"error": str(e)}), 50
 
-    
+# Endpoint to delete a scheduled transaction
+@app.route('/api/Scheduled/<transaction_id>', methods=['DELETE'])
+def delete_scheduled_transaction(transaction_id):
+    try:
+        # Delete scheduled transaction from Firestore using transaction_id
+        transaction_ref = db.collection('Scheduled').document(transaction_id)
+        transaction_ref.delete()
+
+        return jsonify({"message": "Scheduled transaction deleted successfully " + transaction_id}), 200
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+# Endpoint to update a scheduled transaction
+@app.route('/api/Scheduled/<transaction_id>', methods=['PUT'])
+def update_scheduled_transaction(transaction_id):
+    try:
+        data = request.get_json()
+        transaction_ID = data.get('ID')
+        transaction_date = data.get('Date')
+        product_name = data.get('Name')
+        amount = data.get('Amount')
+        price = data.get('Price')
+        transaction_type = data.get('Type')
+
+        # Validate input data here if necessary
+
+        current_time = datetime.now()
+        # Update scheduled transaction in Firestore using transaction_id
+        transaction_date = datetime.utcfromtimestamp(current_time.timestamp()).strftime('%Y-%m-%d %H:%M:%S')
+        transaction_ref = db.collection('Scheduled').document(transaction_id)
+        transaction_ref.set({
+            'ID': transaction_ID,
+            'Date': transaction_date,
+            'Name': product_name,
+            'Amount': amount,
+            'Price': price,
+            'Type': transaction_type
+        })
+
+        return jsonify({"message": "Scheduled transaction updated successfully"}), 200
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500    
+
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=False)

@@ -53,6 +53,27 @@
                         </form>
                     </div>
                 </div>
+                <div v-if="editingTransaction" class="modal" v-show="showEditModal">
+                    <div class="modal-content">
+                      <span class="close" @click="showEditModal = false; editingTransaction = null">&times;</span>
+                      <h2>Edit Transaction</h2>
+                      <form @submit.prevent="updateEvent">
+                        <label for="productName">Product Name:</label><br>
+                        <input type="text" id="productName" v-model="editingTransaction.Name" required><br>
+                        
+                        <label for="amount">Amount:</label><br>
+                        <input type="number" id="amount" v-model="editingTransaction.Amount" required><br>
+                        
+                        <label for="price">Price:</label><br>
+                        <input type="number" id="price" v-model="editingTransaction.Price" required><br>
+                        
+                        <label for="type">Type:</label><br>
+                        <input type="number" id="type" v-model="editingTransaction.Type" required><br>
+                        <button type="button" @click="handleEventDelete" class="delete">Delete Transaction</button>
+                        <button type="submit" class="success">Save Transaction</button>
+                      </form>
+                    </div>
+                  </div>
             </section>
         </main>
     </div>
